@@ -9,7 +9,7 @@ executors:
   linux-aarch64:
     machine:
       image: ubuntu-2204:current
-    resource_class: arm.medium
+    resource_class: arm.large
 
 jobs: # a basic unit of work in a run
   build_and_test:
@@ -321,7 +321,7 @@ workflows:
               only: bulk
           matrix:
             parameters:
-              os: 
+              os:
                 # - osx-arm64 Bulk is on GitHub Actions
                 - linux-aarch64
               runner: [0, 1, 2, 3, 4, 5]
