@@ -5,8 +5,9 @@ set -exo pipefail
 # Disable parallel build
 export CPU_COUNT=1
 
-ln -s "${CC_FOR_BUILD}" "${BUILD_PREFIX}/bin/gcc"
-ln -s "${CXX_FOR_BUILD}" "${BUILD_PREFIX}/bin/g++"
+
+ln -s "${BUILD_PREFIX}/bin/aarch64-conda-linux-gnu-gcc" "${BUILD_PREFIX}/bin/gcc"
+ln -s "${BUILD_PREFIX}/bin/aarch64-conda-linux-gnu-g++" "${BUILD_PREFIX}/bin/g++"
 
 make binary "-j${CPU_COUNT}"
 
