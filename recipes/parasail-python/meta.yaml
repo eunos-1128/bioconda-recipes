@@ -53,3 +53,4 @@ extra:
     - doi:10.1186/s12859-016-0930-z
   additional-platforms:
     - linux-aarch64
+    - osx-arm64
