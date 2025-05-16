@@ -17,7 +17,6 @@ requirements:
     - make
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - pkg-config
   run:
     - cuda-runtime ==12.1.1  # [linux]
     - cuda-toolkit ==12.1.1  # [linux]
