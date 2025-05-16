@@ -19,14 +19,14 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config
   run:
-    - cuda-runtime >=12.1,<12.2  # [linux]
-    - cuda-toolkit >=12.1,<12.2  # [linux]
+    - cuda-runtime ==12.1.1  # [linux]
+    - cuda-toolkit ==12.1.1  # [linux]
     - openmm
     - pandas
     - pdbfixer
-    - pyg-lib
+    - pyg-lib  # [linux]
     - python
-    - pytorch # [linux]
+    - pytorch ==2.1.0  # [linux]
     - r
     - torchvision  # [linux]
     - torchaudio  # [linux]
