@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/kliment-olechnovic/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f781a9fbab5265bd09b3b5b7e1cba904582ec201c3d30baed36e28a03de3ac61
+  sha256: 3c42a02591b388c3c8bf8b640fccefb4c0bc6201158e7226260defd65022dfe9
 
 build:
   number: 0
@@ -20,7 +20,8 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config
   run:
-    - cuda >=12.1,<12.2
+    - cuda-runtime >=12.1,<12.2
+    - cuda-toolkit >=12.1,<12.2
     - openmm
     - pandas
     - pdbfixer
@@ -35,6 +36,7 @@ requirements:
     - torchsparse
     - pytorch_cluster
     - torch_spline_conv
+
 test:
   commands:
     - ftdmp-all -h
