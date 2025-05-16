@@ -19,9 +19,6 @@ requirements:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - pkg-config
-  host:
-      - libgomp  # [linux]
-      - llvm-openmp  # [osx]
   run:
     - cuda >=12.1,<12.2
     - openmm
