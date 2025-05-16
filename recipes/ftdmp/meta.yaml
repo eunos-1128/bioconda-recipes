@@ -58,7 +58,9 @@ about:
 
 extra:
   additional-platforms:
-    - linux-64
-    - osx-64
+    - linux-aarch64
+    - osx-arm64
   identifiers:
     - doi:10.1002/prot.26792
+  recipe-maintainers:
+    - eunos-1128
