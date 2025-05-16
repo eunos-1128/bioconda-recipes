@@ -1,0 +1,64 @@
+{% set name = "FTDMP" %}
+{% set version = "1.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/kliment-olechnovic/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: f781a9fbab5265bd09b3b5b7e1cba904582ec201c3d30baed36e28a03de3ac61
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  build:
+    - make
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - pkg-config
+  host:
+      - libgomp  # [linux]
+      - llvm-openmp  # [osx]
+  run:
+    - cuda >=12.1,<12.2
+    - openmm
+    - pandas
+    - pdbfixer
+    - pyg-lib
+    - python
+    - pytorch ==2.5.1
+    - r
+    - torchvision ==0.21.0
+    - torchaudio ==2.7.0
+    - torch-geometric ==2.6.1
+    - torch-scatter ==2.1.2
+    - torchsparse ==1.4.0
+    - pytorch_cluster ==1.6.3
+    - torch_spline_conv ==1.2.2
+test:
+  commands:
+    - ftdmp-all -h
+
+about:
+  home: https://kliment-olechnovic.github.io/ftdmp
+  dev_url: https://github.com/kliment-olechnovic/ftdmp
+  doc_url: https://kliment-olechnovic.github.io/ftdmp
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  summary: "Running docking experiments and scoring/ranking multimeric models"
+  description: |
+    FTDMP is a software system for running docking experiments and scoring/ranking multimeric models.
+
+    FTDMP was used in CASP15 by the "Venclovas" team (Vilnius University / Life Sciences Center / Institute of Biotechnology).
+    The most novel and useful features of FTDMP are integrated VoroIF-jury and VoroIF-GNN methods.
+
+extra:
+  additional-platforms:
+    - linux-64
+    - osx-64
+  identifiers:
+    - doi:10.1002/prot.26792
