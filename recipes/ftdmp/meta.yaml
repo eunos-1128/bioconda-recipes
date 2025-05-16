@@ -26,15 +26,15 @@ requirements:
     - pdbfixer
     - pyg-lib
     - python
-    - pytorch ==2.5.1
+    - pytorch # [linux]
     - r
-    - torchvision
-    - torchaudio
-    - torch-geometric
-    - torch-scatter
-    - torchsparse
-    - pytorch_cluster
-    - torch_spline_conv
+    - torchvision  # [linux]
+    - torchaudio  # [linux]
+    - torch-geometric  # [linux]
+    - torch-scatter  # [linux]
+    - torchsparse  # [linux]
+    - pytorch_cluster  # [linux]
+    - torch_spline_conv  # [linux]
 
 test:
   commands:
