@@ -29,15 +29,15 @@ requirements:
     - pdbfixer
     - pyg-lib
     - python
-    - pytorch ==2.5.1
+    - pytorch
     - r
-    - torchvision ==0.21.0
-    - torchaudio ==2.7.0
-    - torch-geometric ==2.6.1
-    - torch-scatter ==2.1.2
-    - torchsparse ==1.4.0
-    - pytorch_cluster ==1.6.3
-    - torch_spline_conv ==1.2.2
+    - torchvision
+    - torchaudio
+    - torch-geometric
+    - torch-scatter
+    - torchsparse
+    - pytorch_cluster
+    - torch_spline_conv
 test:
   commands:
     - ftdmp-all -h
