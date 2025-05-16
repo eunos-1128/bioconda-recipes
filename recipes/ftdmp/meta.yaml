@@ -11,7 +11,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [win]
 
 requirements:
   build:
@@ -20,14 +19,14 @@ requirements:
     - {{ compiler("cxx") }}
     - pkg-config
   run:
-    - cuda-runtime >=12.1,<12.2
-    - cuda-toolkit >=12.1,<12.2
+    - cuda-runtime >=12.1,<12.2  # [linux]
+    - cuda-toolkit >=12.1,<12.2  # [linux]
     - openmm
     - pandas
     - pdbfixer
     - pyg-lib
     - python
-    - pytorch
+    - pytorch ==2.5.1
     - r
     - torchvision
     - torchaudio
