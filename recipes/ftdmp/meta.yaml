@@ -18,8 +18,8 @@ requirements:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
   run:
-    - cuda-runtime ==12.1.1  # [linux]
-    - cuda-toolkit ==12.1.1  # [linux]
+    - cuda-runtime ==12.1.0  # [linux]
+    - cuda-toolkit ==12.1.0  # [linux]
     - openmm
     - pandas
     - pdbfixer
