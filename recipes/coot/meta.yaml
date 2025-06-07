@@ -37,7 +37,6 @@ requirements:
     - gsl >=2.7,<3
     - zlib
     - openblas
-    - liblapack
     - libxml2
     - libpng
     - freetype
@@ -49,11 +48,10 @@ requirements:
     - sqlite
     - rdkit
     - gemmi
-    #- fftw2  # not avaliable as conda package now
-    #- clipper  # not avaliable as conda package now
-    #- mmdb2  # not avaliable as conda package now
     #- libccp4  # not avaliable as conda package now
+    #- mmdb2  # not avaliable as conda package now
     #- ssm  # not avaliable as conda package now
+    #- clipper  # not avaliable as conda package now
   run:
     - python {{ python }}
     - {{ pin_compatible("numpy") }}
