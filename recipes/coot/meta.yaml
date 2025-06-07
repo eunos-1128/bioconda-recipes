@@ -1,0 +1,87 @@
+{% set name = "coot" %}
+{% set version = "1.1.16" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/pemsley/{{ name|lower }}/archive/refs/tags/Release-{{ version }}.tar.gz
+  sha256: ddaf9c7dade0d9b21881617ec01eebb5f4bb6fb7cb6282ec0db559469d366219
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(name|lower, max_pin="x.x") }}
+
+requirements:
+  build:
+    - {{ compiler("cxx") }}
+    - cmake
+    - make
+    - pkg-config
+    - autoconf
+    - automake
+    - libtool
+    - m4
+    - flex
+    - bison
+    - swig
+  host:
+    - python {{ python }}
+    - nanobind
+    - numpy >=1,<2
+    - libboost-devel >=1.86,<1.87
+    - libboost-python-devel >=1.86,<1.87
+    - eigen
+    - gsl >=2.7,<3
+    - zlib
+    - openblas
+    - liblapack
+    - libxml2
+    - libpng
+    - freetype
+    - fontconfig
+    - cairo
+    - pixman
+    - curl
+    - libffi
+    - sqlite
+    - rdkit
+    - gemmi
+    #- fftw2  # not avaliable as conda package now
+    #- clipper  # not avaliable as conda package now
+    #- mmdb2  # not avaliable as conda package now
+    #- libccp4  # not avaliable as conda package now
+    #- ssm  # not avaliable as conda package now
+  run:
+    - python {{ python }}
+    - {{ pin_compatible("numpy") }}
+
+test:
+  imports:
+    - coot_headless_api
+  commands:
+    - python -c "import coot_headless_api; container = coot_headless_api.molecules_container_t(False); print('Import successful')"
+
+about:
+  home: https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot
+  dev_url: https://github.com/pemsley/coot
+  doc_url: https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/web/docs
+  license: GPL-3.0-or-later AND LGPL-3.0-or-later
+  license_family: GPL
+  license_file:
+    - COPYING
+    - COPYING.LESSERv3
+  summary: "Headless API for Coot - crystallographic macromolecular model building"
+  description: |
+    Coot is a macromolecular model building, model completion and validation
+    application. This package provides the headless API without GUI dependencies,
+    suitable for automated workflows and web applications.
+
+extra:
+  additional-platforms:
+    - linux-aarch64
+    - osx-arm64
+  recipe-maintainers:
+    - eunos-1128
