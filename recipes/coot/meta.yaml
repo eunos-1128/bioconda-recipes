@@ -1,4 +1,4 @@
-{% set name = "coot" %}
+{% set name = "Coot" %}
 {% set version = "1.1.16" %}
 
 package:
@@ -73,11 +73,11 @@ about:
   license_file:
     - COPYING
     - COPYING.LESSERv3
-  summary: "Headless API for Coot - crystallographic macromolecular model building"
+  summary: "Coot Headless API - Software for macromolecular model building"
   description: |
     Coot is a macromolecular model building, model completion and validation
     application. This package provides the headless API without GUI dependencies,
-    suitable for automated workflows and web applications.
+    suitable for automated workflows.
 
 extra:
   additional-platforms:
