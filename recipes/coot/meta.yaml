@@ -1,4 +1,4 @@
-{% set name = "Coot" %}
+{% set name = "coot-headless" %}
 {% set version = "1.1.16" %}
 
 package:
@@ -48,10 +48,10 @@ requirements:
     - sqlite
     - rdkit
     - gemmi
-    #- libccp4  # not avaliable as conda package now
-    #- mmdb2  # not avaliable as conda package now
-    #- ssm  # not avaliable as conda package now
-    #- clipper  # not avaliable as conda package now
+    - libccp4
+    - mmdb2
+    - ssm
+    - clipper
   run:
     - python {{ python }}
     - {{ pin_compatible("numpy") }}
