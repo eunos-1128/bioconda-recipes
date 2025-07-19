@@ -1,0 +1,65 @@
+{% set name = "MolProbity" %}
+{% set version = "daee5253054c978010b782c840bd3e3ec24b1b4d" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version[0:7] }}
+
+source:
+  url: https://github.com/rlabduke/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 011e3f7fa172ef52b3a92044042765763b82515e97c3a30cb14bab0ee15a658c
+
+build:
+  number: 0
+  run_exports: []
+
+requirements:
+  build:
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - make
+    - pkg-config
+  host:
+    - cbflib
+    - future
+    - libboost-devel >=1.86.0,<1.87.0a0
+    - libboost-python-devel >=1.86.0,<1.87.0a0
+    - libgomp  # [linux]
+    - llvm-openmp  # [osx]
+    # - python {{ python_min }}
+    - python
+    - reduce
+    - scons
+    - six
+  run:
+    - gawk
+    - perl
+    - python
+
+test:
+  commands:
+    - molprobity --version
+    - molprobity --help
+
+about:
+  home: "http://molprobity.biochem.duke.edu"
+  dev_url: "https://github.com/rlabduke/MolProbity"
+  doc_url: "https://github.com/rlabduke/MolProbity/tree/{{ version }}/doc"
+  license: "Custom License"
+  license_file: LICENSE.html
+  summary: "Protein and nucleic acid validation service"
+  description: |
+    MolProbity provides the user with an expert-system consultation about the accuracy of a macromolecular structure model, diagnosing local problems and enabling their correction.
+    It combines all atom contact analysis with updated versions of more traditional tools for validating geometry and dihedral-angle combinations.
+    MolProbity is most complete for crystal structures of proteins and RNA, but also handles DNA, ligands, and NMR ensembles.
+    It works best as an active validation tool - used as soon as a model is available and during each rebuild/refine loop, not just at the end to provide global statistics before deposition.
+    It produces coordinates, graphics, and numerical evaluations that integrate with either manual or automated use in systems such as PHENIX, KiNG, or Coot.
+
+extra:
+  additional-platforms:
+    - linux-aarch64
+    - osx-arm64
+  identifiers:
+    - doi:10.1093/nar/gkm216
+  recipe-maintainers:
+    - eunos-1128
