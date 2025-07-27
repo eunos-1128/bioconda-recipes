@@ -44,4 +44,4 @@ sed -i.bak 's|^int routne.*;||' modules/ccp4io/libccp4/fortran/library_f.c
     --with-python="${PYTHON}" \
     --use-conda="${PREFIX}" \
     --nproc="${CPU_COUNT}" \
-    build tests doc
+    base build tests doc
