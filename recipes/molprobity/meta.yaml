@@ -21,6 +21,7 @@ requirements:
     - pkg-config
   host:
     - cbflib
+    - cctbx-base
     - future
     - libboost-devel >=1.86.0,<1.87.0a0
     - libboost-python-devel >=1.86.0,<1.87.0a0
@@ -32,6 +33,7 @@ requirements:
     - scons
     - six
   run:
+    - cctbx-base
     - gawk
     - perl
     - php

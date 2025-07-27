@@ -48,5 +48,4 @@ sed -i.bak -E \
     --nproc="${CPU_COUNT}" \
     build tests doc
 
-install -m 0755 "${SRC_DIR}/build/bin/"* "${PREFIX}/bin/"
 install -m 0755 "${SRC_DIR}/cmdline/"* "${PREFIX}/bin/"
