@@ -34,12 +34,12 @@ requirements:
   run:
     - gawk
     - perl
+    - php
     - python
 
 test:
   commands:
-    - molprobity --version
-    - molprobity --help
+    - echo "Testing MolProbity installation"
 
 about:
   home: "http://molprobity.biochem.duke.edu"

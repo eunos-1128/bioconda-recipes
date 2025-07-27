@@ -34,7 +34,9 @@ os.environ["CPPFLAGS"] += " -include stdlib.h"\
     --nproc="${CPU_COUNT}"
 
 sed -i.bak 's|int putenv ();||' modules/ccp4io/libccp4/ccp4/library_utils.c
-sed -i.bak 's|^int routne.*;||' modules/ccp4io/libccp4/fortran/library_f.c
+sed -i.bak -E \
+  's|\(void[[:space:]]*\(\*[[:space:]]*routne\)[[:space:]]*\(\)[[:space:]]*,|(void (* routne)(...),|g' \
+  modules/ccp4io/libccp4/fortran/library_f.c
 
 "${PYTHON}" bootstrap.py \
     --mpi-build \
@@ -44,4 +46,7 @@ sed -i.bak 's|^int routne.*;||' modules/ccp4io/libccp4/fortran/library_f.c
     --with-python="${PYTHON}" \
     --use-conda="${PREFIX}" \
     --nproc="${CPU_COUNT}" \
-    base build tests doc
+    build tests doc
+
+install -m 0755 "${SRC_DIR}/build/"* "${PREFIX}/bin/"
+install -m 0755 "${SRC_DIR}/cmdline/"* "${PREFIX}/bin/"
