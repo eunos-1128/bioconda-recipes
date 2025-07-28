@@ -19,7 +19,7 @@ requirements:
   #   - {{ compiler("cxx") }}
   #   - make
   #   - pkg-config
-  host:
+  # host:
     # - cbflib
     # - cctbx-base
     # - future
