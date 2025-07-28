@@ -14,30 +14,33 @@ build:
   run_exports: []
 
 requirements:
-  build:
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
-    - make
-    - pkg-config
+  # build:
+  #   - {{ compiler("c") }}
+  #   - {{ compiler("cxx") }}
+  #   - make
+  #   - pkg-config
   host:
+    # - cbflib
+    # - cctbx-base
+    # - future
+    # - libboost-devel >=1.86.0,<1.87.0a0
+    # - libboost-python-devel >=1.86.0,<1.87.0a0
+    # # - python {{ python_min }}
+    # - python
+    # - reduce
+    # - scons
+    # - six
+  run:
     - cbflib
     - cctbx-base
     - future
-    - libboost-devel >=1.86.0,<1.87.0a0
-    - libboost-python-devel >=1.86.0,<1.87.0a0
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
-    # - python {{ python_min }}
-    - python
-    - reduce
-    - scons
-    - six
-  run:
-    - cctbx-base
     - gawk
     - perl
     - php
     - python
+    - reduce
+    - six
+    - chem_data::chem_data
 
 test:
   commands:
