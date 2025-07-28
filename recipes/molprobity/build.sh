@@ -49,4 +49,7 @@ set -exo pipefail
 #     base build tests doc
 
 mkdir -p "${PREFIX}/bin"
+mkdir -p "${PREFIX}/lib"
+
 install -m 0755 "${SRC_DIR}/cmdline/"* "${PREFIX}/bin/"
+install -m 0644 "${SRC_DIR}/lib/"* "${PREFIX}/lib/"
