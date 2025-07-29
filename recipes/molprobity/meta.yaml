@@ -41,6 +41,7 @@ requirements:
     - reduce
     - six
     - chem_data::chem_data
+    - phenix-dev::httpd
 
 test:
   commands:

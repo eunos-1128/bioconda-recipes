@@ -1,2 +1,2 @@
 channel_sources:
-  - conda-forge,chem_data
+  - conda-forge,chem_data,phenix-dev

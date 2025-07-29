@@ -49,7 +49,30 @@ set -exo pipefail
 #     base build tests doc
 
 mkdir -p "${PREFIX}/bin"
-mkdir -p "${PREFIX}/lib"
+if [[ "${target_platform}" == "linux-"* ]]; then
+    for dir in bin "bin/linux"; do
+        for f in "${SRC_DIR}/${dir}/"*; do
+            [[ -f "$f" ]] && install -m 755 "$f" "${PREFIX}/bin"
+        done
+    done
+elif [[ "${target_platform}" == "osx-"* ]]; then
+    for dir in bin "bin/macosx"; do
+        for f in "${SRC_DIR}/${dir}/"*; do
+            [[ -f "$f" ]] && install -m 755 "$f" "${PREFIX}/bin"
+        done
+    done
+fi
 
-install -m 0755 "${SRC_DIR}/cmdline/"* "${PREFIX}/bin/"
-install -m 0644 "${SRC_DIR}/lib/"* "${PREFIX}/lib/"
+mkdir -p "${PREFIX}/libexec/molprobity"/{cmdline,lib,jobs,config}
+for dir in cmdline config jobs lib; do
+    for f in "${SRC_DIR}/${dir}/"*; do
+        [[ -f "$f" ]] && install -m 755 "$f" "${PREFIX}/libexec/molprobity/${dir}"
+    done
+done
+
+pushd "${PREFIX}/bin" >/dev/null
+for tool in ../libexec/molprobity/cmdline/*; do
+    [[ -f "$tool" ]] || continue
+    ln -s "$tool" "$(basename "$tool")"
+done
+popd >/dev/null
