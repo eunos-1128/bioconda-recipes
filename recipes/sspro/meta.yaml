@@ -1,0 +1,44 @@
+{% set name = "SSpro" %}
+{% set version = "4.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://download.igb.uci.edu/{{ name|lower }}{{ version[0] }}.tar.gz
+  sha256: 39dacc525d5f9aad3db749f26a68cec26c90acf98cb8c34082c0f4b6df0b6e5a
+
+build:
+  number: 0
+  run_exports: []
+
+requirements:
+  host:
+    - perl
+  run:
+    - perl
+
+test:
+  commands:
+    - predict_acc.sh
+
+about:
+  home: https://download.igb.uci.edu/sspro4.html
+  doc_url: https://download.igb.uci.edu/#sspro
+  license: "CUSTOM (academic-only)"
+  license_family: OTHER
+  summary: "Predictors of protein secondary structure and relative solvent accessibility using profiles, machine learning and structural similarity"
+  description: |
+    SSpro and ACCpro are two distinct predictors within the SCRATCH server suite, both designed to predict protein structural features.
+    While ACCpro focuses on relative solvent accessibility, SSpro predicts secondary structure.
+    Both leverage machine learning and evolutionary information for their predictions.
+
+extra:
+  additional-platforms:
+    - linux-aarch64
+    - osx-arm64
+  identifiers:
+    - doi:10.1093/nar/gki396
+  recipe-maintainers:
+    - eunos-1128
