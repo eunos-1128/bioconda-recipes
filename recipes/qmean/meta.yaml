@@ -1,0 +1,88 @@
+{% set name = "QMEAN" %}
+{% set version = "4.5.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  - url: https://git.scicore.unibas.ch/schwede/{{ name|lower }}/-/archive/{{ version }}/{{ name|lower }}-{{ version }}.tar.gz
+    sha256: 8865848b309577781bf335847d8f4fb042583da4da8cd181878787b3c72d1d9d
+    patches:
+      - patches/conda.patch
+    folder: qmean
+  - url: https://download.igb.uci.edu/sspro4.tar.gz
+    sha256: 39dacc525d5f9aad3db749f26a68cec26c90acf98cb8c34082c0f4b6df0b6e5a
+    folder: sspro
+
+build:
+  number: 0
+  run_exports:
+    - {{ pin_subpackage(name|lower, max_pin="x.x") }}
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - make
+    - ninja
+    - patch
+    - sphinx
+  host:
+    - libboost-devel 1.86.*
+    - libboost-python-devel 1.86.*
+    - eigen
+    - matplotlib-base
+    - numpy
+    - perl
+    - python {{ python }}
+    - scipy
+    - openstructure
+  run:
+    - {{ pin_compatible("numpy") }}
+    - {{ pin_compatible("scipy") }}
+    - {{ pin_compatible("matplotlib-base") }}
+    - hhsuite
+    - perl
+    - psipred ==3.5
+    - python {{ python }}
+
+test:
+  source_files:
+    - qmean/doc/source/example_scripts/*
+  commands:
+    - qmean -h
+    - pip check
+  imports:
+    - qmean
+  requires:
+    - pip
+
+about:
+  home: https://git.scicore.unibas.ch/schwede/QMEAN
+  dev_url: https://git.scicore.unibas.ch/schwede/QMEAN
+  doc_url: https://git.scicore.unibas.ch/schwede/QMEAN/-/tree/{{ version }}/doc
+  license: Apache-2.0
+  license_family: Apache
+  license_file: qmean/LICENSE
+  summary: "QMEAN - Qualitative Model Energy ANalysis"
+  description: |
+    QMEAN (Qualitative Model Energy ANalysis) is a statistical potential–based method for assessing the quality of protein structure models.
+    It provides three analysis modes:
+
+      - QMEAN: Computes a global quality score for the entire model.
+      - QMEANDisCo: Evaluates local quality by incorporating homology information.
+      - QMEANBrane: Assesses the quality of membrane protein models.
+
+    By leveraging the UniClust30 database and, for QMEANDisCo, the QMEAN Template Library (QMTL), it delivers high-precision and reliable model evaluations.
+
+extra:
+  identifiers:
+    - biotools:qmean
+    - biotools:QMEANDisCo
+    - doi:10.1093/bioinformatics/btq662
+    - doi:10.1093/bioinformatics/btu457
+    - doi:10.1093/bioinformatics/btz828
+  additional-platforms:
+    - linux-aarch64
+    - osx-arm64
