@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -exo pipefail
 
 export CPPFLAGS="${CPPFLAGS} -I${PREFIX}/include"
@@ -61,8 +62,10 @@ cmake -S . -B build -G Ninja \
   -DCLIPPER-CONTRIB_LIBRARY="${PREFIX}/lib/libclipper-contrib${SHLIB_EXT}" \
   -DCLIPPER-CIF_LIBRARY="${PREFIX}/lib/libclipper-cif${SHLIB_EXT}" \
   -DPYTHON_SITE_PACKAGES="${SP_DIR}" \
+  -DMAKE_COOT_HEADLESS_API_PYI=ON \
   -Wno-dev -Wno-deprecated --no-warn-unused-cli \
   ${CONFIG_ARGS}
+
 
 cmake --build build --clean-first --target coot_headless_api -j "${CPU_COUNT}"
 cmake --install build -j "${CPU_COUNT}"
