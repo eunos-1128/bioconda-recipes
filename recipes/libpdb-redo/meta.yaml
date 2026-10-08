@@ -8,6 +8,9 @@ package:
 source:
   url: https://github.com/PDB-REDO/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 9061695b2b35672d829605bf8c441f8f0cbcc6cd61a102bc8a7720a71bce78b1
+  # macOS libc++ needs explicit headers and lacks std::make_const_iterator.
+  patches:
+    - fix-macos-libcxx.patch  # [osx]
 
 build:
   number: 0
