@@ -31,6 +31,9 @@ requirements:
     - gsl
     - libcifpp 10.0.*
     - zlib
+  run:
+    # 'libcifpp' may change its public API in patch releases.
+    - {{ pin_compatible("libcifpp", max_pin="x.x.x") }}
 
 about:
   home: "https://pdb-redo.eu"
