@@ -15,7 +15,8 @@ source:
 build:
   number: 0
   run_exports:
-    - {{ pin_subpackage(name, max_pin="x.x") }}
+    # Patch version update may be destructive.
+    - {{ pin_subpackage(name, max_pin="x.x.x") }}
 
 requirements:
   build:
