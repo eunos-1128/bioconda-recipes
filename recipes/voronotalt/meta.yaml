@@ -29,12 +29,12 @@ test:
   imports:
     - voronotalt
     - voronotalt.pandas_interface
-    - voronotalt.biotite_interface  # [not (aarch64 and py == 310)]
+    - voronotalt.biotite_interface  # [py >= 311]
     - voronotalt.gemmi_interface
     - voronotalt.biopython_interface
   requires:
     - pandas
-    - biotite  # [not (aarch64 and py == 310)]
+    - biotite  # [py >= 311]
     - gemmi
     - biopython
     - packaging >=24
