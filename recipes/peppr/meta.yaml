@@ -26,7 +26,8 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - biotite >=1.2
+    - biotite >=1.6
+    - packaging >=24
     - numpy >=1.25
     - pandas >=2.0.0
     - rdkit >=2025.03.5
@@ -35,9 +36,8 @@ requirements:
 test:
   imports:
     - peppr
-  # `pip check` skipped: stray hatch-cython metadata (likely from biotite) fails it.
   commands:
-    # - pip check
+    - python -m pip check
     - peppr --help
   requires:
     - pip
