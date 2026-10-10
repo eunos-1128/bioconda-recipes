@@ -13,7 +13,7 @@ build:
   entry_points:
     - peppr = peppr.cli:cli
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
   run_exports:
     - {{ pin_subpackage("peppr", max_pin="x.x") }}
