@@ -40,7 +40,6 @@ test:
     - packaging >=24
     - pip
   commands:
-    # `pip check` skipped: stray hatch-cython metadata (likely from biotite) fails it.
     - python -m pip check
     - python -c "import voronotalt; b = voronotalt.Ball(0, 0, 0, 1); print(b.r)"
 
