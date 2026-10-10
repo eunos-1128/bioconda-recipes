@@ -37,6 +37,7 @@ test:
     - biotite  # [not (aarch64 and py == 310)]
     - gemmi
     - biopython
+    - packaging >=24
     - pip
   commands:
     # `pip check` skipped: stray hatch-cython metadata (likely from biotite) fails it.
